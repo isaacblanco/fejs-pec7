@@ -1,2 +1,1 @@
-# fejs-pec7
-PEC 7 FE-JS
+# Front End Avanzado - PEC7
