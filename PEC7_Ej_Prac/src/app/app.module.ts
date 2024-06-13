@@ -13,6 +13,9 @@ import { ArticleListComponent } from "./components/article/article-list/article-
 import { HeaderComponent } from "./header/header.component";
 import { FormatoMonedaPipe } from "./shared/formato-moneda.pipe";
 import { ArticleImagePipe } from './shared/article-image.pipe';
+import { LoginComponent } from './user/login/login.component';
+import { RegisterComponent } from './user/register/register.component';
+import { ArticleDetailComponent } from './article/article-detail/article-detail.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { ArticleImagePipe } from './shared/article-image.pipe';
     ArticleNewReactiveComponent,
     FormatoMonedaPipe,
     ArticleImagePipe,
+    LoginComponent,
+    RegisterComponent,
+    ArticleDetailComponent,
   ],
   imports: [
     BrowserModule,
