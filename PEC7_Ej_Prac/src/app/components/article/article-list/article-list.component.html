@@ -1,0 +1,29 @@
+<h2>Catálogo de productos</h2>
+
+<form [formGroup]="searchForm">
+  <input
+    type="text"
+    formControlName="query"
+    placeholder="Buscar por nombre"
+    style="width: 100%"
+  />
+</form>
+
+<div style="flex-direction: row; display: flex">
+  <span
+    *ngFor="let article of articles$ | async"
+    style="
+      align-items: flex-start;
+      border: 1px solid #ccc;
+      display: flex;
+      margin: 10px;
+      max-width: 250px;
+      padding: 10px;
+    "
+  >
+    <app-article-item
+      [article]="article"
+      (quantityChange)="cambiosEnLaCantidad($event)"
+    ></app-article-item>
+  </span>
+</div>
