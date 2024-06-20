@@ -36,7 +36,7 @@ http://localhost:3000/api/articles
 
 El get funciona sin problemas, devolviendo 3 articulos. Los post relacionados con el usuario, se modificarón.
 
-**NOTA: al no estar disponible la solución en el momento de resolución de la práctica, he optado por usar mi proyecto de la PEC6, aunque no fue corregido**
+**NOTA: empece por mi ejercicio, pero decidí esperar a tener la solución oficial para fijarme como se hace y trabajar sobre ella.**
 
 ### Dificultades
 

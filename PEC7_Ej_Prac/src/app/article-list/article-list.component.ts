@@ -1,64 +1,79 @@
-import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
-import { Observable, Subject } from 'rxjs';
-import { debounceTime, switchMap,
-  distinctUntilChanged, startWith, merge,
-  share } from 'rxjs/operators';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormControl, Validators } from "@angular/forms";
+import { Observable, Subject, merge } from "rxjs";
+import {
+  debounceTime,
+  distinctUntilChanged,
+  map,
+  startWith,
+  switchMap,
+} from "rxjs/operators";
 
-import { Article } from "src/app/models/article";
-import { ArticleQuantityChange } from "src/app/models/article-quantity-change";
-import { ArticleService } from 'src/app/services/article.service';
-
+import { ArticleService } from "src/app/core/services/article.service";
+import { Article } from "src/app/shared/models/article";
+import { ArticleQuantityChange } from "src/app/shared/models/article-quantity-change";
 
 @Component({
   selector: "app-article-list",
-  template: `
-   <div class="search">
+  template: ` <div class="search">
       <input
-        type="text" 
+        type="text"
         name="searchBox"
-        [(ngModel)]="searchString"
+        [formControl]="searchForm"
         placeholder="Search Here"
-        (keyup)="search()">
+      />
     </div>
     <div class="list">
       <div *ngFor="let article of articles$ | async">
-          <app-article-item (quantityChange) = "onQuantityChange($event)" [article]="article"></app-article-item>
+        <app-article-item
+          (quantityChange)="onQuantityChange($event)"
+          [article]="article"
+        ></app-article-item>
       </div>
     </div>`,
-  styles: [`.list {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 20px;
-  }
-  .search {
-    margin-top: 20px;
-    display: flex;
-    justify-content:center;
-    align-items: center;
-  }`],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styles: [
+    `
+      .list {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 20px;
+      }
+      .search {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    `,
+  ],
 })
 export class ArticleListComponent implements OnInit {
   public articles$: Observable<Article[]>;
+  public searchForm: FormControl;
+  private searchTerms: Subject<string> = new Subject<string>();
+  private reloadArticleList: Subject<void> = new Subject<void>();
 
-  public searchString: string = '';
-  private searchTerms: Subject<string> = new Subject();
-  private reloadArticleList : Subject <void> = new Subject();
-
-  constructor(private articleService: ArticleService) { }
-
-  ngOnInit() {
-    this.articles$ = this.searchTerms.pipe(
-      startWith(this.searchString),
-      debounceTime(500),
-      distinctUntilChanged(),
-      merge(this.reloadArticleList),
-      switchMap((q) => this.articleService.getArticles(this.searchString)));
+  constructor(
+    private articleService: ArticleService,
+    private formBuilder: FormBuilder
+  ) {
+    this.searchForm = this.formBuilder.control("", Validators.required);
   }
 
-    
+  ngOnInit() {
+    this.articles$ = merge(
+      this.searchTerms.pipe(
+        startWith(""),
+        debounceTime(500),
+        distinctUntilChanged()
+      ),
+      this.reloadArticleList.pipe(map(() => this.searchForm.value || ""))
+    ).pipe(switchMap((term: string) => this.articleService.getArticles(term)));
+  }
+
   onQuantityChange(change: ArticleQuantityChange) {
-    this.articleService.changeQuantity(change.article.id, change.changeInQuantity)
+    this.articleService
+      .changeQuantity(change.article.id, change.changeInQuantity)
       .subscribe((res) => {
         console.log(res.msg);
         this.reloadArticleList.next();
@@ -66,11 +81,10 @@ export class ArticleListComponent implements OnInit {
   }
 
   search() {
-    this.searchTerms.next(this.searchString);
+    this.searchTerms.next(this.searchForm.value);
   }
 
   onNew() {
     this.reloadArticleList.next();
   }
 }
-
