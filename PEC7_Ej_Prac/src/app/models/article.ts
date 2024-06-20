@@ -1,7 +1,8 @@
 export interface Article {
-  name: string;
-  imageUrl: string;
-  price: number;
-  isOnSale: boolean;
-  quantityInCart: number;
-}
+    id: number;
+    name: string;
+    imageUrl: string;
+    price: number;
+    isOnSale: boolean;
+    quantityInCart: number;
+  }
