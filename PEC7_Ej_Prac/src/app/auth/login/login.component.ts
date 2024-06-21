@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
             console.log("Login successful", response);
             this.loginMessage = "Login successful!";
             this.router.navigate(["/article/list"]);
+            // Redirect
           },
           error: (error) => {
             console.error("Login failed", error);

@@ -62,4 +62,17 @@ Mejoras en la página
 - Si bien la estructura de ficheros se ha cambiado para que tenga algo más de lógica, es mejorable, y no sigue el formato propuesto.
 - No se ha controlado la url de la imagen, ya que venia dada en la solución.
 - No soy partidario de incluir el template en el ts y se han generado el html y el css para el listado.
--
+- He dejado siempre en el menú la opción "Nuevo articulo reactive", para que se vea que cuando no se esta logado, que no se puede acceder.
+- Cuando ya se esta logado, automaticamente redirige al /articles/list
+
+### Problemas
+
+El menú no siempre se refresca cuando debe, las opciones de 'Logout' vs. 'Login' y 'register', en caso de duda, refrescar la pantalla.
+
+#### Lazy loading
+
+Se han creado dos ficheros de carga: articles.module.ts y auth-routing.module.ts que permiten tratarlos independientemente.
+
+Aquí se observa la carga en dos fases: cuando no se esta logado y despues:
+
+![Lazy loading](./lazy_loading.png)

@@ -1,21 +1,10 @@
+// src/app/auth/auth.module.ts
 import { CommonModule } from "@angular/common";
-import { HttpClientModule } from "@angular/common/http";
-import { NgModule, Optional, SkipSelf } from "@angular/core";
-
-import { AuthService } from "./auth.service";
+import { NgModule } from "@angular/core";
+import { AuthRoutingModule } from "./auth-routing.module";
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, HttpClientModule],
-  providers: [AuthService],
-  exports: [],
+  imports: [CommonModule, AuthRoutingModule],
 })
-export class AuthModule {
-  constructor(@Optional() @SkipSelf() parentModule: AuthModule) {
-    if (parentModule) {
-      throw new Error(
-        "AuthModule is already loaded. Import it in the AppModule only"
-      );
-    }
-  }
-}
+export class AuthModule {}
