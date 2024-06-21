@@ -36,5 +36,15 @@
   </div>
   <div>
     <button type="submit" [disabled]="loginForm.invalid">Login</button>
+    <!-- Botón adicional para registrarse -->
+    <br />
+    <button
+      type="button"
+      class="btn btn-link bg-secondary-subtle"
+      routerLink="/register"
+    >
+      Register
+    </button>
   </div>
 </form>
+<div *ngIf="loginMessage" class="alert alert-info">{{ loginMessage }}</div>

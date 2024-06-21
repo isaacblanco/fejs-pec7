@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { AuthService } from "../auth.service"; // Asegúrate de tener la ruta correcta
+import { AuthService } from "../auth.service";
 
 @Component({
   selector: "app-register",
@@ -9,6 +9,7 @@ import { AuthService } from "../auth.service"; // Asegúrate de tener la ruta co
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
+  registrationSuccessMessage: string = ""; // Mensaje de éxito
 
   constructor(private authService: AuthService) {}
 
@@ -33,8 +34,15 @@ export class RegisterComponent implements OnInit {
           this.registerForm.value.password
         )
         .subscribe({
-          next: (response) => console.log("Registration successful", response),
-          error: (error) => console.error("Registration failed", error),
+          next: (response) => {
+            console.log("Registration successful", response);
+            this.registrationSuccessMessage = "Registration successful!"; // Establecer el mensaje de éxito
+          },
+          error: (error) => {
+            console.error("Registration failed", error);
+            this.registrationSuccessMessage =
+              "No se ha podido registrar al usario, tal vez ya exista"; // Limpiar el mensaje si hay error
+          },
         });
     }
   }

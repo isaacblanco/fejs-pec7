@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import { AuthService } from "src/app/auth/auth.service";
 import { ArticleService } from "src/app/core/services/article.service";
 import { Article } from "src/app/shared/models/article";
 
@@ -9,23 +10,38 @@ import { Article } from "src/app/shared/models/article";
   styleUrls: ["./article-detail.component.css"],
 })
 export class ArticleDetailComponent implements OnInit {
-  article: Article; // Almacena los detalles del artículo
+  article: Article;
 
   constructor(
-    private articleService: ArticleService, // Servicio para obtener los datos del artículo
-    private route: ActivatedRoute // Servicio para acceder a los parámetros de la ruta
+    private articleService: ArticleService,
+    private authService: AuthService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      const id = +params.get("id"); // Obtiene el ID del artículo de la URL
+      const id = +params.get("id");
       this.loadArticle(id);
     });
   }
 
-  private loadArticle(id: number): void {
+  loadArticle(id: number): void {
     this.articleService.getArticleById(id).subscribe((article) => {
-      this.article = article; // Guarda el artículo obtenido en la propiedad
+      this.article = article;
     });
+  }
+
+  goBack(): void {
+    this.router.navigate(["/article/list"]);
+  }
+
+  editArticle(articleId: number): void {
+    if (!this.isLoggedIn) return;
+    this.router.navigate(["/article/edit", articleId]);
+  }
+
+  get isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
   }
 }

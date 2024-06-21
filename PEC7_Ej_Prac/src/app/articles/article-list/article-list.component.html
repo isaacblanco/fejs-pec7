@@ -9,7 +9,10 @@
   />
 </div>
 <div class="list">
-  <div *ngFor="let article of articles$ | async">
+  <div
+    *ngFor="let article of articles$ | async"
+    (click)="onArticleClick(article.id)"
+  >
     <app-article-item
       (quantityChange)="onQuantityChange($event)"
       [article]="article"

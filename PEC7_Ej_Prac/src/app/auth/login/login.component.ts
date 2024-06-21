@@ -9,6 +9,7 @@ import { AuthService } from "../auth.service";
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup; // Declarar la variable para el formulario
+  loginMessage: string = ""; // Mensaje de éxito o fracaso
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -33,15 +34,17 @@ export class LoginComponent implements OnInit {
         .subscribe({
           next: (response) => {
             console.log("Login successful", response);
-            localStorage.setItem("authToken", response.token); // Guarda el token recibido
-            this.router.navigate(["article/list"]); // Redireccionar a article/list
+            this.loginMessage = "Login successful!";
+            this.router.navigate(["/article/list"]);
           },
           error: (error) => {
             console.error("Login failed", error);
+            this.loginMessage =
+              "Login failed. Please check your username and password.";
           },
         });
     } else {
-      console.error("Formulario inválido");
+      this.loginMessage = "Please fill in all fields correctly.";
     }
   }
 }

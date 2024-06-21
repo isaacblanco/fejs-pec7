@@ -2,7 +2,6 @@
   <div>
     <label for="username">Username:</label>
     <input id="username" type="text" formControlName="username" />
-    <!-- Mostrar errores de validación para username -->
     <div
       *ngIf="
         registerForm.get('username').touched &&
@@ -20,7 +19,6 @@
   <div>
     <label for="password">Password:</label>
     <input id="password" type="password" formControlName="password" />
-    <!-- Mostrar errores de validación para password -->
     <div
       *ngIf="
         registerForm.get('password').touched &&
@@ -37,5 +35,16 @@
   </div>
   <div>
     <button type="submit" [disabled]="registerForm.invalid">Register</button>
+    <br />
+    <button
+      type="button"
+      class="btn btn-link bg-secondary-subtle"
+      routerLink="/login"
+    >
+      login
+    </button>
   </div>
 </form>
+<div *ngIf="registrationSuccessMessage" class="alert alert-danger">
+  {{ registrationSuccessMessage }}
+</div>

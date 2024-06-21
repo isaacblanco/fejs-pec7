@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import { Observable, Subject, merge } from "rxjs";
 import {
   debounceTime,
@@ -26,7 +27,8 @@ export class ArticleListComponent implements OnInit {
 
   constructor(
     private articleService: ArticleService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {
     this.searchForm = this.formBuilder.control("", Validators.required);
   }
@@ -57,5 +59,9 @@ export class ArticleListComponent implements OnInit {
 
   onNew() {
     this.reloadArticleList.next();
+  }
+
+  onArticleClick(articleId: number): void {
+    this.router.navigate(["/article", articleId]);
   }
 }

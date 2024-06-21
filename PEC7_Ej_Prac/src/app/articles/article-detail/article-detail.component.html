@@ -1,1 +1,16 @@
-<p>article-detail works!</p>
+<!-- article-detail.component.html -->
+
+<div class="detail-container" *ngIf="article">
+  <h2>{{ article.name }}</h2>
+  <img [src]="article.imageUrl" alt="{{ article.name }}" />
+  <p>Price: ${{ article.price }}</p>
+  <p *ngIf="article.isOnSale"><strong>On Sale!</strong></p>
+  <p>Quantity in Cart: {{ article.quantityInCart }}</p>
+  <button (click)="goBack()">Back to List</button>
+  <!--
+  En un futuro, para editar
+  <button *ngIf="isLoggedIn" (click)="editArticle(article.id)">
+    Edit Article
+  </button>
+  -->
+</div>
