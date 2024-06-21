@@ -6,8 +6,8 @@ import {
   Output,
 } from "@angular/core";
 
-import { Article } from "../shared/models/article";
-import { ArticleQuantityChange } from "../shared/models/article-quantity-change";
+import { Article } from "../../shared/models/article";
+import { ArticleQuantityChange } from "../../shared/models/article-quantity-change";
 
 @Component({
   selector: "app-article-item",

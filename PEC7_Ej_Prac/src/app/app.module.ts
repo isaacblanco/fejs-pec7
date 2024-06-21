@@ -5,14 +5,16 @@ import { BrowserModule } from "@angular/platform-browser";
 
 import { AppComponent } from "./app.component";
 
-import { ArticleDetailComponent } from "./article-detail/article-detail.component";
-import { ArticleItemComponent } from "./article-item/article-item.component";
-import { ArticleListComponent } from "./article-list/article-list.component";
-import { ArticleNewReactiveComponent } from "./article-new-reactive/article-new-reactive.component";
+import { ArticleDetailComponent } from "./articles/article-detail/article-detail.component";
+import { ArticleItemComponent } from "./articles/article-item/article-item.component";
+import { ArticleListComponent } from "./articles/article-list/article-list.component";
+import { ArticleNewReactiveComponent } from "./articles/article-new-reactive/article-new-reactive.component";
+import { LoginComponent } from "./auth/login/login.component";
+import { RegisterComponent } from "./auth/register/register.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { ImageArticlePipe } from "./pipes/image-article.pipe";
-import { LoginComponent } from "./user/login/login.component";
-import { RegisterComponent } from "./user/register/register.component";
+
+import { AppRoutingModule } from "./app-routing.module";
 
 // Core module
 import { CoreModule } from "./core/core.module";
@@ -35,6 +37,7 @@ import { CoreModule } from "./core/core.module";
     ReactiveFormsModule,
     HttpClientModule,
     CoreModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

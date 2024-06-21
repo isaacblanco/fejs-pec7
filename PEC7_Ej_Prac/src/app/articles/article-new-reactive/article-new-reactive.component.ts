@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 import { ArticleService } from "src/app/core/services/article.service";
-import { NameArticleValidator } from "./../core/validators/name-article-validator";
+import { NameArticleValidator } from "./../../core/validators/name-article-validator";
 
 @Component({
   selector: "app-article-new-reactive",

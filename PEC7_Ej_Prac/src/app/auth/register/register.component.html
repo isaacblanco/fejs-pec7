@@ -1,0 +1,41 @@
+<form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+  <div>
+    <label for="username">Username:</label>
+    <input id="username" type="text" formControlName="username" />
+    <!-- Mostrar errores de validación para username -->
+    <div
+      *ngIf="
+        registerForm.get('username').touched &&
+        registerForm.get('username').errors
+      "
+    >
+      <p *ngIf="registerForm.get('username').errors['required']">
+        Username is required.
+      </p>
+      <p *ngIf="registerForm.get('username').errors['minlength']">
+        Username must be at least 3 characters long.
+      </p>
+    </div>
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input id="password" type="password" formControlName="password" />
+    <!-- Mostrar errores de validación para password -->
+    <div
+      *ngIf="
+        registerForm.get('password').touched &&
+        registerForm.get('password').errors
+      "
+    >
+      <p *ngIf="registerForm.get('password').errors['required']">
+        Password is required.
+      </p>
+      <p *ngIf="registerForm.get('password').errors['minlength']">
+        Password must be at least 6 characters long.
+      </p>
+    </div>
+  </div>
+  <div>
+    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+  </div>
+</form>

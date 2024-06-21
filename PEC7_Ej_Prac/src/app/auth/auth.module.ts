@@ -2,17 +2,19 @@ import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule, Optional, SkipSelf } from "@angular/core";
 
+import { AuthService } from "./auth.service";
+
 @NgModule({
   declarations: [],
   imports: [CommonModule, HttpClientModule],
-  providers: [],
+  providers: [AuthService],
   exports: [],
 })
-export class CoreModule {
-  constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
+export class AuthModule {
+  constructor(@Optional() @SkipSelf() parentModule: AuthModule) {
     if (parentModule) {
       throw new Error(
-        "CoreModule is already loaded. Import it in the AppModule only"
+        "AuthModule is already loaded. Import it in the AppModule only"
       );
     }
   }

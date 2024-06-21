@@ -1,0 +1,39 @@
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+  <div>
+    <label for="username">Username:</label>
+    <input id="username" type="text" formControlName="username" />
+    <!-- Mostrar errores de validación para username -->
+    <div
+      *ngIf="
+        loginForm.get('username').touched && loginForm.get('username').errors
+      "
+    >
+      <p *ngIf="loginForm.get('username').errors['required']">
+        Username is required.
+      </p>
+      <p *ngIf="loginForm.get('username').errors['minlength']">
+        Username must be at least 3 characters long.
+      </p>
+    </div>
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input id="password" type="password" formControlName="password" />
+    <!-- Mostrar errores de validación para password -->
+    <div
+      *ngIf="
+        loginForm.get('password').touched && loginForm.get('password').errors
+      "
+    >
+      <p *ngIf="loginForm.get('password').errors['required']">
+        Password is required.
+      </p>
+      <p *ngIf="loginForm.get('password').errors['minlength']">
+        Password must be at least 6 characters long.
+      </p>
+    </div>
+  </div>
+  <div>
+    <button type="submit" [disabled]="loginForm.invalid">Login</button>
+  </div>
+</form>

@@ -28,4 +28,10 @@ export class ArticleService {
       article
     );
   }
+
+  getArticleById(id: number): Observable<Article> {
+    return this.http.get<Article>(`http://localhost:3000/api/articles/${id}`, {
+      params: { id: id },
+    });
+  }
 }
