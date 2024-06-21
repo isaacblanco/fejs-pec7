@@ -7,11 +7,7 @@ export class AuthStoreService {
   private _isLoggedIn: boolean = false;
 
   constructor() {
-    this._isLoggedIn = !!this.getToken(); // Inicializa el estado basado en la presencia del token
-  }
-
-  setIsLoggedIn(value: boolean): void {
-    this._isLoggedIn = value;
+    this._isLoggedIn = !!this.getToken();
   }
 
   isLoggedIn(): boolean {
@@ -24,11 +20,11 @@ export class AuthStoreService {
 
   setToken(token: string): void {
     localStorage.setItem("authToken", token);
-    this.setIsLoggedIn(true);
+    this._isLoggedIn = true;
   }
 
   clearToken(): void {
     localStorage.removeItem("authToken");
-    this.setIsLoggedIn(false);
+    this._isLoggedIn = false;
   }
 }

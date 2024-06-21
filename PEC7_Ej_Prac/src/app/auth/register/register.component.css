@@ -5,7 +5,7 @@ form {
   align-items: center;
   justify-content: center;
   min-height: 60vh; /* Asegura que el formulario esté verticalmente centrado */
-  margin: auto;
+  margin: 20px auto;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;

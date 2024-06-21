@@ -1,8 +1,5 @@
 <h3>Create Wine</h3>
 <div>
-  <app-article-new-reactive></app-article-new-reactive>
-</div>
-<div>
   <h4 class="error">{{ message }}</h4>
   <form [formGroup]="article" (ngSubmit)="createWine()">
     <div>
