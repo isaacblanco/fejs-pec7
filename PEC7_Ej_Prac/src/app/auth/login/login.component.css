@@ -1,0 +1,65 @@
+/* Estilo para el contenedor del formulario para centrarlo vertical y horizontalmente */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px; /* Limita el ancho máximo del formulario */
+}
+
+/* Estilos para los divs que contienen los inputs y etiquetas */
+form div {
+  width: 100%; /* Asegura que los contenedores de los inputs usen todo el ancho disponible */
+  margin-bottom: 20px;
+}
+
+/* Estilo para las etiquetas */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Estilos para los inputs */
+input {
+  width: 100%;
+  height: 40px;
+  padding: 0 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Estilo para los mensajes de error */
+p {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+/* Estilo para el botón de submit */
+button {
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

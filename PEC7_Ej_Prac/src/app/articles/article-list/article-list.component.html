@@ -1,0 +1,18 @@
+<h1>Lista de articulos</h1>
+
+<div class="search">
+  <input
+    type="text"
+    name="searchBox"
+    [formControl]="searchForm"
+    placeholder="Search Here"
+  />
+</div>
+<div class="list">
+  <div *ngFor="let article of articles$ | async">
+    <app-article-item
+      (quantityChange)="onQuantityChange($event)"
+      [article]="article"
+    ></app-article-item>
+  </div>
+</div>

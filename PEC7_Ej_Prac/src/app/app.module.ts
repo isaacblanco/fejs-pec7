@@ -33,12 +33,13 @@ import { CoreModule } from "./core/core.module";
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     CoreModule,
-    AppRoutingModule,
   ],
+  exports: [ArticleDetailComponent, ArticleItemComponent, ArticleListComponent],
   providers: [],
   bootstrap: [AppComponent],
 })

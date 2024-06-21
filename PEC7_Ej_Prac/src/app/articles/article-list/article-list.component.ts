@@ -15,37 +15,8 @@ import { ArticleQuantityChange } from "src/app/shared/models/article-quantity-ch
 
 @Component({
   selector: "app-article-list",
-  template: ` <div class="search">
-      <input
-        type="text"
-        name="searchBox"
-        [formControl]="searchForm"
-        placeholder="Search Here"
-      />
-    </div>
-    <div class="list">
-      <div *ngFor="let article of articles$ | async">
-        <app-article-item
-          (quantityChange)="onQuantityChange($event)"
-          [article]="article"
-        ></app-article-item>
-      </div>
-    </div>`,
-  styles: [
-    `
-      .list {
-        display: flex;
-        flex-wrap: wrap;
-        margin: 20px;
-      }
-      .search {
-        margin-top: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-    `,
-  ],
+  templateUrl: "./article-list.component.html",
+  styleUrls: ["./article-list.component.css"],
 })
 export class ArticleListComponent implements OnInit {
   public articles$: Observable<Article[]>;
