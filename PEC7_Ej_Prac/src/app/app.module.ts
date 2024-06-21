@@ -17,6 +17,7 @@ import { ImageArticlePipe } from "./pipes/image-article.pipe";
 import { AppRoutingModule } from "./app-routing.module";
 
 // Core module
+import { AuthModule } from "./auth/auth.module";
 import { CoreModule } from "./core/core.module";
 
 @NgModule({
@@ -38,6 +39,7 @@ import { CoreModule } from "./core/core.module";
     ReactiveFormsModule,
     HttpClientModule,
     CoreModule,
+    AuthModule,
   ],
   exports: [ArticleDetailComponent, ArticleItemComponent, ArticleListComponent],
   providers: [],

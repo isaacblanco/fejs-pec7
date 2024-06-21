@@ -5,8 +5,11 @@
       <a class="nav-link active" routerLink="/login">Login</a>
       <a class="nav-link" routerLink="/register">Register</a>
       <a class="nav-link" routerLink="/article/list">Articulos</a>
-      <a class="nav-link" routerLink="/article/create"
-        >Nuevo articulo reactive</a
+      <a
+        class="nav-link"
+        *ngIf="authStoreService.isLoggedIn()"
+        routerLink="/article/create"
+        >Nuevo artículo reactive</a
       >
     </div>
   </div>
