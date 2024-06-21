@@ -6,6 +6,8 @@ import {
   Output,
 } from "@angular/core";
 
+import { Router } from "@angular/router";
+
 import { Article } from "../../shared/models/article";
 import { ArticleQuantityChange } from "../../shared/models/article-quantity-change";
 
@@ -20,7 +22,7 @@ export class ArticleItemComponent {
   @Output() public quantityChange: EventEmitter<ArticleQuantityChange> =
     new EventEmitter();
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   incrementInCart() {
     this.quantityChange.emit({ article: this.article, changeInQuantity: 1 });
@@ -30,5 +32,9 @@ export class ArticleItemComponent {
     if (this.article.quantityInCart > 0) {
       this.quantityChange.emit({ article: this.article, changeInQuantity: -1 });
     }
+  }
+
+  onArticleClick(articleId: number): void {
+    this.router.navigate(["/article", articleId]);
   }
 }

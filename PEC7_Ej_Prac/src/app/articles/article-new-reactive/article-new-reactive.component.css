@@ -1,0 +1,55 @@
+form {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="checkbox"] {
+  margin-top: 10px;
+}
+
+button {
+  width: 100%;
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Estilo para mensajes de error */
+.error {
+  color: #ff0000;
+  margin-top: 5px;
+}
+
+/* Estilo para etiquetas de inputs, como "On Sale" para checkbox */
+label {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+/* Espaciado y alineación para los elementos del formulario */
+div {
+  margin-bottom: 10px;
+}

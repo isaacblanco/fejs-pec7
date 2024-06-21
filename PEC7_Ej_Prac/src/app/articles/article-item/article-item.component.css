@@ -1,18 +1,24 @@
 .article-item {
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 10px;
-    display: inline-block;
-  }
-  
-  .article-item .details {
-    text-align: center;
-  }
-  
-  .article-item.sale {
-    background-color: rebeccapurple;
-  }
-  
-  .salePrice {
-    color: gray;
-  }
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  display: inline-block;
+}
+
+.article-item .details {
+  text-align: center;
+}
+
+.article-item.sale {
+  background-color: rebeccapurple;
+}
+
+.salePrice {
+  color: gray;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}

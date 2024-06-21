@@ -3,9 +3,46 @@
   flex-wrap: wrap;
   margin: 20px;
 }
+/* Estilos para el área de búsqueda */
 .search {
-  margin-top: 20px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search input {
+  width: 50%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Estilos para la lista de artículos */
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px; /* Espacio entre los artículos */
+  padding: 20px;
+}
+
+.list div {
+  flex: 0 1 30%; /* Cada artículo ocupa cerca de 30% del espacio, con un margen de flexibilidad */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden; /* Asegura que todo dentro de cada div se contenga sin desbordar */
+  background: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Adaptativo para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .search input {
+    width: 80%; /* Más ancho en dispositivos más pequeños */
+  }
+
+  .list div {
+    flex: 0 1 100%; /* Cada artículo ocupa toda la fila en pantallas pequeñas */
+  }
 }

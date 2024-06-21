@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
-import { AuthStoreService } from "src/app/core/services/auth-store.service"; // Asegúrate de que la ruta es correcta
+import { Router } from "@angular/router";
+import { AuthStoreService } from "src/app/core/services/auth-store.service";
 
 @Component({
   selector: "app-navbar",
@@ -7,5 +8,13 @@ import { AuthStoreService } from "src/app/core/services/auth-store.service"; // 
   styleUrls: ["./navbar.component.css"],
 })
 export class NavbarComponent {
-  constructor(public authStoreService: AuthStoreService) {}
+  constructor(
+    public authStoreService: AuthStoreService,
+    private router: Router
+  ) {}
+
+  logout(): void {
+    this.authStoreService.clearToken(); // Asumiendo que clearToken es el método para hacer logout
+    this.router.navigate(["/login"]); // Redirige al usuario a la página de login
+  }
 }

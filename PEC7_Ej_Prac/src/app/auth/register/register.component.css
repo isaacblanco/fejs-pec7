@@ -4,7 +4,7 @@ form {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 60vh; /* Asegura que el formulario esté verticalmente centrado */
+
   margin: 20px auto;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

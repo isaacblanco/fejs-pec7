@@ -52,3 +52,14 @@ Y no es cierto que "se asigna la contraseña “SECRET” a todos los usuarios."
 ### Mejoras realizadas
 
 Espero que mi aportación en el foro evite problemas a la gente que lo este realizando.
+
+Mejoras en la página
+
+- Se han mejorado las apariencias de las páginas, no mucho, pero un trabajo honesto.
+- El formulario de login lleva al register y viceversa.
+- El menú es un poco reactivo, si estas logado, no se muestra ni 'login' ni 'register'
+- Se ha incluido en el detalle del articulo el volver a la lista.
+- Si bien la estructura de ficheros se ha cambiado para que tenga algo más de lógica, es mejorable, y no sigue el formato propuesto.
+- No se ha controlado la url de la imagen, ya que venia dada en la solución.
+- No soy partidario de incluir el template en el ts y se han generado el html y el css para el listado.
+-

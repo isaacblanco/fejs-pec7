@@ -60,8 +60,4 @@ export class ArticleListComponent implements OnInit {
   onNew() {
     this.reloadArticleList.next();
   }
-
-  onArticleClick(articleId: number): void {
-    this.router.navigate(["/article", articleId]);
-  }
 }

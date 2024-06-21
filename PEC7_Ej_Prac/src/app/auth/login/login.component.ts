@@ -14,6 +14,11 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
+    // Si ya estamos validados, redirigir a la lista de artículos
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(["/article/list"]);
+    }
+
     // Inicializar el formulario con los controles y validadores
     this.loginForm = new FormGroup({
       username: new FormControl("", [

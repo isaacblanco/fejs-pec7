@@ -1,16 +1,24 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" routerLink="">Inicio</a>
+    <a class="navbar-brand" routerLink="/article/list">Inicio</a>
     <div class="navbar-nav">
-      <a class="nav-link active" routerLink="/login">Login</a>
-      <a class="nav-link" routerLink="/register">Register</a>
-      <a class="nav-link" routerLink="/article/list">Articulos</a>
+      <ng-template #showLogin>
+        <a class="nav-link" routerLink="/login">Login</a>
+        <a class="nav-link" routerLink="/register">Register</a>
+      </ng-template>
+
+      <a class="nav-link" routerLink="/article/list">Artículos</a>
       <a
         class="nav-link"
         *ngIf="authStoreService.isLoggedIn()"
         routerLink="/article/create"
         >Nuevo artículo reactive</a
       >
+
+      <!-- Condición para mostrar Logout si está logueado y Login si no lo está -->
+      <ng-container *ngIf="authStoreService.isLoggedIn(); else showLogin">
+        <a class="nav-link" (click)="logout()">Logout</a>
+      </ng-container>
     </div>
   </div>
 </nav>
